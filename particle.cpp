@@ -11,15 +11,14 @@
 #include <cmath>
 
 /// @brief constructor
-Particle::Particle(glm::vec3 _position)
+Particle::Particle()
 {
-    m_position = _position;
 }
 
 /// @brief method that updates the particle
 void Particle::update()
 {
-    //m_velocity += glm::vec3(-0.03,-0.01,0);
+   // m_velocity += glm::vec3(-(float)rand()/RAND_MAX*0.02-0.04,-0.01,0);
 
     // new position
     m_position += m_velocity;
@@ -29,13 +28,13 @@ void Particle::update()
     m_lifeSpan += 0.02;
 
     // updates the alpha channel for the particle
-    m_transparency -= 0.02;
+   // m_transparency -= 0.02;
 
     //firework
-    m_colour.x += 0.01;
+    //m_colour.x += 0.01;
     /// there is a problem when you set it to 0.1 it grows bigger
     /// it is probably because you use the size in the drawing of the particle
-    m_size -= 0.001;
+    //m_size -= 0.001;
 
 }
 

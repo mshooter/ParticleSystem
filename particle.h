@@ -6,9 +6,8 @@
 class Particle
 {
 public:
-    // constructor
-    Particle(glm::vec3 _position);
-
+    /// @brief constructor
+    Particle();
 
     /// @brief method to update the particle's position
     void update();

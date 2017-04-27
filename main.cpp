@@ -33,8 +33,7 @@ int main()
     glScalef(0.01,0.01,0.01);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glScalef(0.9,0.9,0);
-    glRotatef(60,0,0.5,0);
+    //glScalef(0.5,0.5,0.5);
 
     // init a emitter
     Emitter blab(1000,glm::vec3(0,0,0));

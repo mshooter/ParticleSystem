@@ -4,25 +4,9 @@
 ///
 ///
 /// COMMENTS:
-/* sort of fire
-* m_position = glm::vec3((float)rand()/RAND_MAX*101.0-50,-100,(float)rand()/RAND_MAX*101.0-50);
-m_velocity = glm::vec3(0,((float)rand()/RAND_MAX*2.0+0.1),0);
-m_colour = glm::vec3(1,0.5,0);
-m_size = (float)rand()/RAND_MAX*0.6;
-m_lifeLimit = 2;
-m_lifeSpan = (float)rand()/RAND_MAX*2+1.0;
-m_transparency = 1;*/
-
-/* m_position = m_oldPosition;
-m_velocity = (glm::vec3((float)rand()/RAND_MAX*0.5f-0.4,((float)rand()/RAND_MAX*2+1.0),(float)rand()/RAND_MAX*2-0.4));
-m_colour = glm::vec3(1,0.5,0);
-m_size = 1;
-m_lifeLimit = 3;
-m_lifeSpan = (float)rand()/RAND_MAX*2+1.0;
-m_transparency = 1;*/
 ///
-///
-///
+/// constructors are not inherited
+/// use keyword virtual (=0 := pure functions) to override the base class functions
 
 /// @build constructor
 Emitter::Emitter(int _numberOfParticles, glm::vec3 _positionE)
@@ -30,10 +14,11 @@ Emitter::Emitter(int _numberOfParticles, glm::vec3 _positionE)
     // set the position of the emitter as the position for you particles (pointer)
     for(int i=0; i<_numberOfParticles; ++i)
     {
-        m_listOfParticles.push_back(Particle(_positionE));
+        m_listOfParticles.push_back(Particle());
     }
     // number of particles
     m_numberOfParticles = _numberOfParticles;
+    m_positionEmitter = _positionE;
 
 }
 
@@ -85,12 +70,34 @@ void Emitter::run()
         else
         {
             // resetting the particles
-            m_listOfParticles[i].setPosition(glm::vec3(0,0,0));
-            m_listOfParticles[i].setVelocity( glm::normalize(glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0)));
-            m_listOfParticles[i].setColour(glm::vec3((double)rand()/RAND_MAX*2.0-1,0,0));
-            m_listOfParticles[i].setSize(0.3);
+            // firecurtain settings
+            /*m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),0,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);
+            m_listOfParticles[i].setVelocity(glm::vec3(0,(float)rand()/RAND_MAX*2.0+0.1,0));
+            m_listOfParticles[i].setColour(glm::vec3(1,0.5,0));
+            m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
+            m_listOfParticles[i].setLifeSpan((float)rand()/RAND_MAX*2+1.0);
+            m_listOfParticles[i].setLifeLimit(2);
+            m_listOfParticles[i].setTransparency(1);*/
+
+            // firework settings
+            m_listOfParticles[i].setPosition(m_positionEmitter);
+            m_listOfParticles[i].setVelocity(glm::normalize(glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0)));
+            m_listOfParticles[i].setColour(glm::vec3(1,0,0.2));
+            m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
             m_listOfParticles[i].setLifeSpan(0);
+            m_listOfParticles[i].setLifeLimit(1);
             m_listOfParticles[i].setTransparency(1);
+
+            // heavy rain settings
+            /*m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),100,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);
+            m_listOfParticles[i].setVelocity(glm::vec3(0,-(double)rand()/RAND_MAX*2-0.1,0));
+            m_listOfParticles[i].setColour(glm::vec3(0,0.5,1));
+            m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
+            m_listOfParticles[i].setLifeSpan((float)rand()/RAND_MAX*2+1.0);
+            m_listOfParticles[i].setLifeLimit(2);
+            m_listOfParticles[i].setTransparency(1);*/
+
+
 
         }
     }
