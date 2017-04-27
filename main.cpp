@@ -8,14 +8,12 @@
 #include <iostream>
 #include <cstdlib>
 #include "glm/glm.hpp"
-#include "DisplayWindow.h"
+#include "displaywindow.h"
 #include "emitter.h"
 
 // constants
 const int WIDTH = 720;
 const int HEIGHT = 576;
-
-
 
 
 
@@ -35,10 +33,12 @@ int main()
     glScalef(0.01,0.01,0.01);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glScalef(0.8,0.8,0.8);
+    glScalef(0.9,0.9,0);
+    glRotatef(60,0,0.5,0);
 
     // init a emitter
-    Emitter blab(100, glm::vec3(0,0,0));
+    Emitter blab(1000,glm::vec3(0,0,0));
+
     // starts the game loop
     bool quit=false;
     while(!quit)
@@ -62,6 +62,7 @@ int main()
             case SDLK_w : glPolygonMode(GL_FRONT_AND_BACK,GL_LINE); break;
             // make OpenGL draw solid
             case SDLK_s : glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);   break;
+
           } // end of key process
         } // end of keydown
 
@@ -70,10 +71,7 @@ int main()
 
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       // draw a particle; this is a test you have to generate particles in the emitter class
-      blab.update();
-      blab.draw();
-
-
+      blab.run();
 
      // update the buffer so we can see what we have drawn.
      win.swapWindow();

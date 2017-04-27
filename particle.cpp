@@ -10,28 +10,20 @@
 #include <iostream>
 #include <cmath>
 
-// explosion: glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0)
-
-// constructor
-Particle::Particle(glm::vec3 _position/*,glm::vec3 _velocity, glm::vec3 _colour*/, float _size, float _lifeLimit)
+/// @brief constructor
+Particle::Particle(glm::vec3 _position)
 {
     m_position = _position;
-    m_velocity = glm::normalize(glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0));
-    m_colour = glm::vec3((double)rand()/RAND_MAX*2.0-1.0,0,(double)rand()/RAND_MAX*2.0-1.0);
-    m_size = _size;
-    m_lifeLimit = _lifeLimit;
-    m_lifeSpan = 0;
-    m_transparency = 1;
-
 }
 
-// update the particle
+/// @brief method that updates the particle
 void Particle::update()
 {
-    //m_velocity += glm::vec3(0,-0.098,0);
+    //m_velocity += glm::vec3(-0.03,-0.01,0);
 
     // new position
     m_position += m_velocity;
+
 
     // lifeSpan update, USE IT AS ALPHA?
     m_lifeSpan += 0.02;
@@ -39,12 +31,15 @@ void Particle::update()
     // updates the alpha channel for the particle
     m_transparency -= 0.02;
 
-    m_colour.x += 0.1;
-
+    //firework
+    m_colour.x += 0.01;
+    /// there is a problem when you set it to 0.1 it grows bigger
+    /// it is probably because you use the size in the drawing of the particle
+    m_size -= 0.001;
 
 }
 
-// draw the particle
+/// @brief method that draws the particle
 void Particle::draw()
 {
     // enable blending
@@ -101,7 +96,7 @@ void Particle::draw()
 /// @brief checks if the particle is dead or not
 int Particle::isDead()
 {
-    if(m_lifeSpan > m_lifeLimit)
+    if(m_lifeSpan >= m_lifeLimit || m_size < 0 || m_transparency<=0)
     {
         return 1;
     }
@@ -112,13 +107,50 @@ int Particle::isDead()
 }
 
 
-void Particle::reset()
+/// @brief method that sets the position of particle
+void Particle::setPosition(glm::vec3 _position)
 {
-    m_position = glm::vec3(0,0,0);
-    m_velocity = glm::normalize(glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0));
-    m_colour = glm::vec3((double)rand()/RAND_MAX*2.0-1.0,0,(double)rand()/RAND_MAX*2.0-1.0);
-    m_size = 0.6;
-    m_lifeLimit = 1;
-    m_lifeSpan = 0;
-    m_transparency = 1;
+    m_position = _position;
+}
+
+/// @brief method that sets the velocity of particle
+void Particle::setVelocity(glm::vec3 _velocity)
+{
+    m_velocity = _velocity;
+}
+
+/// @brief method that sets the colour of particle
+void Particle::setColour(glm::vec3 _colour)
+{
+    m_colour = _colour;
+}
+
+/// @brief method that sets the size of the particle
+void Particle::setSize(float _size)
+{
+    m_size = _size;
+}
+
+/// @brief method that sets the lifespan of the particle
+void Particle::setLifeSpan(float _lifeSpan)
+{
+    m_lifeSpan=_lifeSpan;
+}
+
+/// @brief method that sets the transparency of the particle
+void Particle::setTransparency(float _transparency)
+{
+    m_transparency = _transparency;
+}
+
+/// @brief method that sets the lifelimit of the particle
+void Particle::setLifeLimit(float _lifeLimit)
+{
+    m_lifeLimit = _lifeLimit;
+}
+
+/// @brief method that gets the position of the particle
+glm::vec3 Particle::getPosition() const
+{
+    return m_position;
 }

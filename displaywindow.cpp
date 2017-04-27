@@ -11,7 +11,7 @@
 
 DisplayWindow::DisplayWindow(const std::string &_name, int _x, int _y, int _width, int _height)
 {
-    m_name=_name;
+      m_name=_name;
       m_x=_x;
       m_y=_y;
       m_width=_width;
@@ -55,7 +55,7 @@ void DisplayWindow::createGLContext()
 
 void DisplayWindow::setBackground()
 {
-    glClearColor(0,0,0.05,1);
+    glClearColor(0,0,0,1);
 }
 
 
