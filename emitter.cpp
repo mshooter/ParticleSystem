@@ -71,22 +71,22 @@ void Emitter::run()
         {
             // resetting the particles
             // firecurtain settings
-            /*m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),0,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);
+            m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),0,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);
             m_listOfParticles[i].setVelocity(glm::vec3(0,(float)rand()/RAND_MAX*2.0+0.1,0));
             m_listOfParticles[i].setColour(glm::vec3(1,0.5,0));
             m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
             m_listOfParticles[i].setLifeSpan((float)rand()/RAND_MAX*2+1.0);
             m_listOfParticles[i].setLifeLimit(2);
-            m_listOfParticles[i].setTransparency(1);*/
+            m_listOfParticles[i].setTransparency(1);
 
             // firework settings
-            m_listOfParticles[i].setPosition(m_positionEmitter);
+            /*m_listOfParticles[i].setPosition(m_positionEmitter);
             m_listOfParticles[i].setVelocity(glm::normalize(glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0)));
             m_listOfParticles[i].setColour(glm::vec3(1,0,0.2));
             m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
             m_listOfParticles[i].setLifeSpan(0);
             m_listOfParticles[i].setLifeLimit(1);
-            m_listOfParticles[i].setTransparency(1);
+            m_listOfParticles[i].setTransparency(1);*/
 
             // heavy rain settings
             /*m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),100,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);

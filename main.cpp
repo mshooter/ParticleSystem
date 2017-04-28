@@ -36,7 +36,7 @@ int main()
     //glScalef(0.5,0.5,0.5);
 
     // init a emitter
-    Emitter blab(1000,glm::vec3(0,0,0));
+    Emitter blab(1000,glm::vec3(0,-100,0));
 
     // starts the game loop
     bool quit=false;
