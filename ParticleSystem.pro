@@ -13,6 +13,7 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 INCLUDEPATH += include
+LIBS+=$$system(sdl2-config --libs)
 QMAKE_CXXFLAGS += -msse -msse2 -msse3
 macx:QMAKE_CXXFLAGS+= -arch x86_64
 
@@ -42,10 +43,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     displaywindow.h \
     particle.h \
-    emitter.h
+    emitter.h \
+    fireworks.h \
+    fire.h
 
 
 SOURCES += main.cpp \
     displaywindow.cpp \
     particle.cpp \
-    emitter.cpp
+    emitter.cpp \
+    fireworks.cpp \
+    fire.cpp

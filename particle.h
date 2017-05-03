@@ -3,6 +3,13 @@
 #include "glm/glm.hpp"
 
 
+// constants
+const int WIDTH = 720;
+const int HEIGHT = 576;
+
+/// We should make delta-members so we can change when update for different particle effects
+/// and set methods to set the delta-members
+
 class Particle
 {
 public:
@@ -45,9 +52,6 @@ public:
     /// @brief set method: lifelimit
     /// @param _lifelimit, the lifelimit of the particle
     void setLifeLimit(float _lifeLimit);
-
-    /// @brief get method: gets the position
-    glm::vec3 getPosition() const;
 
 
 private:

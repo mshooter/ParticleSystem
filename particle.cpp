@@ -10,6 +10,8 @@
 #include <iostream>
 #include <cmath>
 
+
+
 /// @brief constructor
 Particle::Particle()
 {
@@ -18,7 +20,7 @@ Particle::Particle()
 /// @brief method that updates the particle
 void Particle::update()
 {
-   // m_velocity += glm::vec3(-(float)rand()/RAND_MAX*0.02-0.04,-0.01,0);
+   // m_velocity += glm::vec3(0,-0.04,0);
 
     // new position
     m_position += m_velocity;
@@ -47,55 +49,62 @@ void Particle::draw()
     // colour for the particle
     glColor4f(m_colour.x, m_colour.y, m_colour.z, m_transparency);
     // shape for the particle
-    glBegin(GL_QUADS);
-    {
-            // FRONT
-            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z - m_size );
-            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z - m_size );
-            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z - m_size );
-            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z - m_size );
+//    glBegin(GL_QUADS);
+//    {
+//            // FRONT
+//            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z - m_size );
 
-            // BACK
-            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z + m_size );
-            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z + m_size );
-            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z + m_size );
-            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z + m_size );
+//            // BACK
+//            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z + m_size );
 
-            // RIGHT
-            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z - m_size );
-            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z - m_size );
-            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z + m_size );
-            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z + m_size );
+//            // RIGHT
+//            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x + m_size, m_position.y + m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z + m_size );
 
-            // LEFT
-            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z + m_size );
-            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z + m_size );
-            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z - m_size );
-            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z - m_size );
+//            // LEFT
+//            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y + m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z - m_size );
 
-            // TOP
-            glVertex3f( m_position.x + m_size,  m_position.y + m_size, m_position.z + m_size );
-            glVertex3f( m_position.x + m_size,  m_position.y + m_size, m_position.z - m_size );
-            glVertex3f( m_position.x - m_size,  m_position.y + m_size, m_position.z - m_size );
-            glVertex3f( m_position.x - m_size,  m_position.y + m_size,  m_position.z + m_size);
-
-            //  BOTTOM
-            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z - m_size );
-            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z + m_size );
-            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z + m_size );
-            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z - m_size );
-
+//            // TOP
+//            glVertex3f( m_position.x + m_size,  m_position.y + m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x + m_size,  m_position.y + m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x - m_size,  m_position.y + m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x - m_size,  m_position.y + m_size,  m_position.z + m_size);
+//            //  BOTTOM
+//            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z - m_size );
+//            glVertex3f( m_position.x + m_size, m_position.y - m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z + m_size );
+//            glVertex3f( m_position.x - m_size, m_position.y - m_size, m_position.z - m_size );
 
 
-       }
-        glEnd();
+
+//       }
+//        glEnd();
+
+    glEnable(GL_POINT_SMOOTH);
+
+     glPointSize(m_size);
+     glBegin(GL_POINTS);
+     glVertex3f(m_position.x, m_position.y, m_position.z);
+     glEnd();
 }
 
 
 /// @brief checks if the particle is dead or not
+/// SOMETHING IS WRONG WITH THE DEAD METHOD
 int Particle::isDead()
 {
-    if(m_lifeSpan >= m_lifeLimit || m_size < 0 || m_transparency<=0)
+    if(m_lifeSpan >= m_lifeLimit || m_size < 0 || m_transparency<=0 || m_position.x >= 80 || m_position.y >= 80)
     {
         return 1;
     }
@@ -146,10 +155,4 @@ void Particle::setTransparency(float _transparency)
 void Particle::setLifeLimit(float _lifeLimit)
 {
     m_lifeLimit = _lifeLimit;
-}
-
-/// @brief method that gets the position of the particle
-glm::vec3 Particle::getPosition() const
-{
-    return m_position;
 }

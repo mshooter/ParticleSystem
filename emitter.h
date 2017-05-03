@@ -14,6 +14,10 @@ public:
     /// @param _numberOfParticles the number of particles in the container(emitter)
     /// @param _position the position of the emitter
     Emitter(int _numberOfParticles, glm::vec3 _positionE);
+    /// @brief update method
+    virtual void update()=0;
+    /// @brief draw method
+    void draw();
     /// @brief method to run the program
     void run();
 
