@@ -3,9 +3,6 @@
 #include "particle.h"
 #include <vector>
 
-/// The emitter should generate each particle one by one.
-/// Check formula
-/// We should have a std::vector <Particle>::iterator ? and then swap the particle vector and the iterator vector: std::particle vector is the particles that zre alive
 
 class Emitter
 {
@@ -16,6 +13,10 @@ public:
     Emitter(int _numberOfParticles, glm::vec3 _positionE);
     /// @brief update method
     virtual void update()=0;
+    /// @brief generate particles
+    void generateParticles();
+    /// @brief kill particles
+    void killParticles();
     /// @brief draw method
     void draw();
     /// @brief method to run the program
@@ -28,6 +29,7 @@ protected:
     glm::vec3 m_positionEmitter;
     /// @brief store the particles in a list
     std::vector<Particle> m_listOfParticles;
+
 
 };
 

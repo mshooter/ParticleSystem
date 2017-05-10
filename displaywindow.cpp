@@ -21,7 +21,7 @@ DisplayWindow::DisplayWindow(const std::string &_name, int _x, int _y, int _widt
 
 void DisplayWindow::init()
 {
-  if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
+  if(SDL_Init(SDL_INIT_EVERYTHING | SDL_INIT_TIMER) < 0)
   {
     ErrorExit("Could Not Init Everything");
   }
@@ -55,7 +55,7 @@ void DisplayWindow::createGLContext()
 
 void DisplayWindow::setBackground()
 {
-    glClearColor(0,0,0,1);
+    glClearColor(0,0,0.1,1);
 }
 
 
@@ -65,6 +65,10 @@ void DisplayWindow::pollEvent(SDL_Event &_event)
   SDL_PollEvent(&_event);
 }
 
+
+void DisplayWindow::resize(int _width, int _height)
+{
+}
 
 
 void DisplayWindow::ErrorExit(const std::string &_msg) const

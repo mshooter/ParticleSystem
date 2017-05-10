@@ -10,26 +10,21 @@
 #include <cmath>
 #include "glm/glm.hpp"
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 #include "displaywindow.h"
-#include "particle.h"
 #include "fireworks.h"
 #include "fire.h"
+#include "camera.h"
 
+const int WIDTH = 720;
+const int HEIGHT = 576;
 
-
-//void Scene::loadProjection(glm::mat4 _matrix) const
-//{
-//  glMatrixMode(GL_PROJECTION);
-//  glLoadIdentity();
-//  glMultMatrixf((const float*)glm::value_ptr(_matrix));
-//  glMatrixMode(GL_MODELVIEW);
-//}
-
-
+/// fix the camera 7 May
+/// make the particle system move
 
 int main()
 {
+
+
 
     // create our SDLWindow called window
     DisplayWindow win("Particle System demo", 0,0, WIDTH, HEIGHT);
@@ -43,15 +38,15 @@ int main()
     float deltaTime = (currentTime-lastTime);
     lastTime = currentTime;
     float speed = 0.001f;
+    float translateZ=300;
+    float translatX=0;
 
-    float rotationY=0;
-    float rotationZ=0;
+    //Create main Camera
+    Camera camera;
+    // init emitter
+    Fireworks blab(100,glm::vec3(0,-100,0));
 
 
-
-
-    // init a emitter
-    Fire blab(1000,glm::vec3(0,0,0));
 
     // starts the game loop
     bool quit=false;
@@ -72,15 +67,11 @@ int main()
           {
             // if it's the escape key quit
             case SDLK_ESCAPE :  quit = true; break;
-            // make OpenGL draw wireframe
-            case SDLK_w : glPolygonMode(GL_FRONT_AND_BACK,GL_LINE); break;
-            // make OpenGL draw solid
-            case SDLK_s : glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);   break;
+            // translate
+            case SDLK_UP: translateZ -= speed * 4 *deltaTime; break;
+            case SDLK_DOWN: translateZ += speed * 4 * deltaTime; break;
+          case SDLK_0 : translatX += speed * 4 *deltaTime; break;
 
-          case SDLK_UP: rotationY -= speed * deltaTime; break;
-          case SDLK_DOWN: rotationY += speed * deltaTime; break;
-          case SDLK_LEFT: rotationZ -= speed * deltaTime; break;
-          case SDLK_RIGHT: rotationZ += speed * deltaTime; break;
 
           } // end of key process
         } // end of keydown
@@ -89,39 +80,54 @@ int main()
       } // end of event switch
 
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-      glMatrixMode(GL_PROJECTION);
-      glLoadIdentity();
-      glScalef(0.01f,0.01f,0.01f);
-      glRotatef(rotationZ,0,-1,0);
-      glRotatef(rotationY,0,0,-1);
-      glMatrixMode(GL_MODELVIEW);
-
-      /// should make a class for the axis
-      // save previous matrix
+      //setup the camera
+      glViewport(0,0,WIDTH,HEIGHT);
+      camera.camPerspective(45.0f,float(WIDTH/HEIGHT),0.0f,100.0f);
+      camera.lookAtTgt(glm::vec3(translateZ,200,0),glm::vec3(0,0,0), glm::vec3(0,0,0));
+      /// cube file
       glPushMatrix();
-      // clear matrix
-      glLoadIdentity();
-      // draw our axes
-      glBegin(GL_LINES);
-      // draw line for x axis
-      glColor3f(1.0, 0.0, 0.0);
-      glVertex3f(0.0, 0.0, 0);
-      glVertex3f(90.0, 0.0, 0);
-      // draw line for y axis
-      glColor3f(0.0, 1.0, 0.0);
-      glVertex3f(0, 0.0, 0);
-      glVertex3f(0, 90.0, 0);
-      // draw line for Z axis
-      glColor3f(0.0, 0.0, 1.0);
-      glVertex3f(0, 0.0, 0);
-      glVertex3f(0, 0.0, 90.0);
+      glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+      glBegin(GL_QUADS);
+
+         glColor3f(1.0, 1.0, 1.0);
+         glVertex3f(100,100,100);
+         glVertex3f(-100,100,100);
+         glVertex3f(-100,-100,100);
+         glVertex3f(100,-100,100);
+
+         glVertex3f(100,100,-100);
+         glVertex3f(-100,100,-100);
+         glVertex3f(-100,-100,-100);
+         glVertex3f(100,-100,-100);
+
+         glVertex3f(100,100,100);
+         glVertex3f(100,-100,100);
+         glVertex3f(100,-100,-100);
+         glVertex3f(100,100,-100);
+
+         glVertex3f(-100,100,100);
+         glVertex3f(-100,-100,100);
+         glVertex3f(-100,-100,-100);
+         glVertex3f(-100,100,-100);
+
+         glVertex3f(100,100,100);
+         glVertex3f(-100,100,100);
+         glVertex3f(-100,100,-100);
+         glVertex3f(100,100,-100);
+
+         glVertex3f(100,-100,100);
+         glVertex3f(-100,-100,100);
+         glVertex3f(-100,-100,-100);
+         glVertex3f(100,-100,-100);
+
       glEnd();
+
       // load the previous matrix
       glPopMatrix();
 
+      //glMatrixMode(GL_MODELVIEW);
       // draw a particle; this is a test you have to generate particles in the emitter class
       blab.run();
-
 
      // update the buffer so we can see what we have drawn.
      win.swapWindow();

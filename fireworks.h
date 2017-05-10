@@ -5,8 +5,12 @@
 class Fireworks : public Emitter
 {
 public:
+    /// @build constructor
     Fireworks(int _numberOfParticles,  glm::vec3 _positionfFireworks);
+    /// @build udpate function
     void update() override;
+    /// @build explode method
+    void explode();
 };
 
 #endif // FIREWORKS_H

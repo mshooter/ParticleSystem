@@ -1,4 +1,8 @@
 #include "fire.h"
+#include "SDL2/SDL.h"
+#include <iostream>
+#include <cstdlib>
+
 
 Fire::Fire(int _numberOfParticles, glm::vec3 _positionFire) : Emitter(_numberOfParticles, _positionFire)
 {
@@ -20,13 +24,16 @@ void Fire::update()
        }
        else
        {
-           m_listOfParticles[i].setPosition((glm::vec3((float)rand()/RAND_MAX*101.0-50, 0, (float)rand()/RAND_MAX*101-50))+m_positionEmitter);
-           m_listOfParticles[i].setVelocity(glm::vec3(0,(float)rand()/RAND_MAX*2.0+0.1,0));
+           m_listOfParticles[i].setPosition((glm::vec3(sin((float)rand()/RAND_MAX*10.0-4.5f), 0, sin((float)rand()/RAND_MAX*10.0f-4.0f))*(glm::vec3((float)rand()/RAND_MAX*25.0-13.0f, 0, (float)rand()/RAND_MAX*25.0f-13.0f)))+m_positionEmitter);
+           m_listOfParticles[i].setVelocity(glm::vec3(0,(float)rand()/(float)RAND_MAX*2.0+0.5,0));
            m_listOfParticles[i].setColour(glm::vec3(1,0.5,0));
-           m_listOfParticles[i].setSize((float)rand()/RAND_MAX*3);
-           m_listOfParticles[i].setLifeSpan((float)rand()/RAND_MAX*2.0+0.5);
-           m_listOfParticles[i].setLifeLimit(2);
+           m_listOfParticles[i].setDeltaColour(glm::vec3(0,0.02,0));
+           m_listOfParticles[i].setSize((float)rand()/RAND_MAX*5.0);
+           m_listOfParticles[i].setDeltaSize(0.1);
+           m_listOfParticles[i].setLifeSpan((float)rand()/RAND_MAX*2.0-0.5);
+           m_listOfParticles[i].setLifeLimit(1);
            m_listOfParticles[i].setTransparency(1);
+
        }
     }
 }

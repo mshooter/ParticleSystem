@@ -22,29 +22,6 @@ Emitter::Emitter(int _numberOfParticles, glm::vec3 _positionE)
 
 }
 
-
-/// @brief a method to update each of the particles contained in the system
-void Emitter::update()
-{
-    for(int i=0; i<m_numberOfParticles; ++i)
-    {
-       if(m_listOfParticles[i].isDead() == 0)
-       {
-           m_listOfParticles[i].update();
-       }
-       else
-       {
-           m_listOfParticles[i].setPosition(m_positionEmitter);
-           m_listOfParticles[i].setVelocity(glm::normalize(glm::vec3((float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0,(float)rand()/RAND_MAX*2.0-1.0)));
-           m_listOfParticles[i].setColour(glm::vec3(1,0,0.2));
-           m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
-           m_listOfParticles[i].setLifeSpan(0);
-           m_listOfParticles[i].setLifeLimit(1);
-           m_listOfParticles[i].setTransparency(1);
-       }
-    }
-}
-
 /// @brief a method to draw all the particles contained in the system
 void Emitter::draw()
 {
@@ -58,6 +35,7 @@ void Emitter::draw()
     }
 
 }
+
 
 
 /// add a partice pseudo code:
@@ -102,13 +80,13 @@ void Emitter::run()
 //            m_listOfParticles[i].setTransparency(1);*/
 
 //            // heavy rain settings
-//            /*m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),100,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);
+//            m_listOfParticles[i].setPosition((glm::vec3(((float)rand()/RAND_MAX*101.0-50),100,(float)rand()/RAND_MAX*101.0-50))+m_positionEmitter);
 //            m_listOfParticles[i].setVelocity(glm::vec3(0,-(double)rand()/RAND_MAX*2-0.1,0));
 //            m_listOfParticles[i].setColour(glm::vec3(0,0.5,1));
 //            m_listOfParticles[i].setSize((float)rand()/RAND_MAX*0.6);
 //            m_listOfParticles[i].setLifeSpan((float)rand()/RAND_MAX*2+1.0);
 //            m_listOfParticles[i].setLifeLimit(2);
-//            m_listOfParticles[i].setTransparency(1);*/
+//            m_listOfParticles[i].setTransparency(1);
 
 
 

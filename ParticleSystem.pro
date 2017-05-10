@@ -45,7 +45,8 @@ HEADERS += \
     particle.h \
     emitter.h \
     fireworks.h \
-    fire.h
+    fire.h \
+    camera.h
 
 
 SOURCES += main.cpp \
@@ -53,4 +54,5 @@ SOURCES += main.cpp \
     particle.cpp \
     emitter.cpp \
     fireworks.cpp \
-    fire.cpp
+    fire.cpp \
+    camera.cpp

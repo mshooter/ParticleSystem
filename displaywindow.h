@@ -13,6 +13,8 @@ public:
 
     void setBackground();
 
+    void resize(int _width, int _height);
+
     void pollEvent(SDL_Event &_event);
 
 private:
