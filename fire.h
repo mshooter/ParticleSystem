@@ -10,7 +10,9 @@ public:
     /// @param _positionEmitter: the position of the Emitter
     Fire(int _numberOfParticles, glm::vec3 _positionEmitter);
     /// @build update function for fire emitter
-    void update() override;
+    void update(float _deltaTime) override;
+
+//    void generateParticles() override;
 };
 
 #endif // FIRE_H

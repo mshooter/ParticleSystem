@@ -12,15 +12,17 @@ public:
     /// @param _position the position of the emitter
     Emitter(int _numberOfParticles, glm::vec3 _positionE);
     /// @brief update method
-    virtual void update()=0;
+    virtual void update(float _deltaTime)=0;
     /// @brief generate particles
-    void generateParticles();
+//    virtual void generateParticles() = 0;
     /// @brief kill particles
     void killParticles();
     /// @brief draw method
     void draw();
     /// @brief method to run the program
-    void run();
+    void run(float _deltaTime);
+
+
 
 protected:
     /// @brief number of particles that the system has

@@ -6,14 +6,13 @@
 class DisplayWindow
 {
 public:
+    /// @build constructor
     DisplayWindow(const std::string &_name, int _x, int _y, int _width, int _height);
 
     void makeCurrent() { SDL_GL_MakeCurrent(m_window, m_glContext); }
     void swapWindow() { SDL_GL_SwapWindow(m_window); }
 
     void setBackground();
-
-    void resize(int _width, int _height);
 
     void pollEvent(SDL_Event &_event);
 

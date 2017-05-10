@@ -43,11 +43,12 @@ void Emitter::draw()
 /// to its default values if there is no dead particle add a new particle to the list
 ///
 
-void Emitter::run()
+void Emitter::run(float _deltaTime)
 {
-    update();
+    update(_deltaTime);
     draw();
 }
+
 
 //void Emitter::run()
 //{
@@ -93,4 +94,5 @@ void Emitter::run()
 //        }
 //    }
 //}
+
 

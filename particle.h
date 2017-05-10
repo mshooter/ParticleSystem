@@ -13,7 +13,7 @@ public:
     Particle();
 
     /// @brief method to update the particle's position
-    void update();
+    void update(float _deltaTime);
 
     /// @brief method to draw the particle
     void draw();
@@ -69,6 +69,8 @@ public:
 
     /// @brief set acceleration
     void setAcceleration(glm::vec3 _acceleration);
+
+    float getXPosition() const;
 
 
 private:

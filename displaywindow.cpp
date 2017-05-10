@@ -66,11 +66,6 @@ void DisplayWindow::pollEvent(SDL_Event &_event)
 }
 
 
-void DisplayWindow::resize(int _width, int _height)
-{
-}
-
-
 void DisplayWindow::ErrorExit(const std::string &_msg) const
 {
   std::cerr<<_msg<<std::endl;

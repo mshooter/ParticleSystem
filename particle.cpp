@@ -18,27 +18,28 @@ Particle::Particle()
 }
 
 /// @brief method that updates the particle
-void Particle::update()
+void Particle::update(float _deltaTime)
 {
 
     // makes weird shapes
    // m_velocity += glm::vec3(0,-cos(45)*0.1,0);
-    m_velocity +=m_acceleration;
+    m_velocity +=m_acceleration*_deltaTime;
+
     // new position
-    m_position += m_velocity;
+    m_position += m_velocity*_deltaTime;
 
    // m_oldPosition = m_position;
     // lifeSpan update, USE IT AS ALPHA?
-   m_lifeSpan += 0.02;
+   m_lifeSpan += 0.02*_deltaTime;
 
     // updates the alpha channel for the particle
-    m_transparency -= 0.02;
+    m_transparency -= 0.02*_deltaTime;
 
-    //firework
-    m_colour -= m_deltaColour;
-    /// there is a problem when you set it to 0.1 it grows bigger
-    /// it is probably because you use the size in the drawing of the particle
-   m_size -= m_deltaSize;
+//    //firework
+    m_colour -= m_deltaColour*_deltaTime;
+//    /// there is a problem when you set it to 0.1 it grows bigger
+//    /// it is probably because you use the size in the drawing of the particle
+   m_size -= m_deltaSize*_deltaTime;
 
 }
 
@@ -126,6 +127,7 @@ void Particle::setPosition(glm::vec3 _position)
 {
     m_position = _position;
 }
+
 
 /// @brief method that sets the velocity of particle
 void Particle::setVelocity(glm::vec3 _velocity)

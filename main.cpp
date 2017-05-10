@@ -14,18 +14,13 @@
 #include "fireworks.h"
 #include "fire.h"
 #include "camera.h"
+#include "timer.h"
 
 const int WIDTH = 720;
 const int HEIGHT = 576;
 
-/// fix the camera 7 May
-/// make the particle system move
-
 int main()
 {
-
-
-
     // create our SDLWindow called window
     DisplayWindow win("Particle System demo", 0,0, WIDTH, HEIGHT);
     // if you have multiple windows open make the window the current window
@@ -33,19 +28,16 @@ int main()
     // sets background colour
     win.setBackground();
 
-    double currentTime = SDL_GetTicks();
-    float lastTime=0;
-    float deltaTime = (currentTime-lastTime);
-    lastTime = currentTime;
-    float speed = 0.001f;
-    float translateZ=300;
-    float translatX=0;
+    Timer timer;
+    float speed = 10;
+    float vertical=-50;
+    float horizontal=0;
+    float translateVertical=100;
 
     //Create main Camera
     Camera camera;
     // init emitter
-    Fireworks blab(100,glm::vec3(0,-100,0));
-
+    Fire fire(1000,glm::vec3(0,-100,0));
 
 
     // starts the game loop
@@ -67,12 +59,15 @@ int main()
           {
             // if it's the escape key quit
             case SDLK_ESCAPE :  quit = true; break;
-            // translate
-            case SDLK_UP: translateZ -= speed * 4 *deltaTime; break;
-            case SDLK_DOWN: translateZ += speed * 4 * deltaTime; break;
-          case SDLK_0 : translatX += speed * 4 *deltaTime; break;
-
-
+            // translate z axis
+            case SDLK_UP:   vertical += speed * timer.getCameraTime();  break;
+            case SDLK_DOWN: vertical -= speed * timer.getCameraTime();  break;
+            case SDLK_LEFT: horizontal -= speed *timer.getCameraTime();  break;
+            case SDLK_RIGHT:horizontal += speed * timer.getCameraTime(); break;
+            case SDLK_b:    timer.pauseTimer();                         break;
+            case SDLK_v:    timer.unPauseTimer();                       break;
+            case SDLK_w:    translateVertical -= speed *4*timer.getCameraTime();   break;
+            case SDLK_s:    translateVertical += speed *4* timer.getCameraTime();  break;
           } // end of key process
         } // end of keydown
 
@@ -83,7 +78,29 @@ int main()
       //setup the camera
       glViewport(0,0,WIDTH,HEIGHT);
       camera.camPerspective(45.0f,float(WIDTH/HEIGHT),0.0f,100.0f);
-      camera.lookAtTgt(glm::vec3(translateZ,200,0),glm::vec3(0,0,0), glm::vec3(0,0,0));
+      camera.lookAtTgt(glm::vec3(0,0,translateVertical),glm::vec3(0,0,0), glm::vec3(horizontal,vertical,0));
+
+      glPushMatrix();
+      // clear matrix
+      //glLoadIdentity();
+      // draw our axes
+      glBegin(GL_LINES);
+      // draw line for x axis
+      glColor3f(1,0, 0.0);
+      glVertex3f(-80.0, -100.0, -80.0);
+      glVertex3f(-40.0, -100.0, -80.0);
+      // draw line for y axis
+      glColor3f(0.0, 1, 0.0);
+      glVertex3f(-80.0, -100.0,-80.0);
+      glVertex3f(-80.0, -50, -80.0);
+      // draw line for Z axis
+      glColor3f(0.0, 0.0, 1);
+      glVertex3f(-80.0, -100.0, -80.0);
+      glVertex3f(-80.0, -100.0, -40);
+      glEnd();
+      // load the previous matrix
+      glPopMatrix();
+
       /// cube file
       glPushMatrix();
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
@@ -121,13 +138,13 @@ int main()
          glVertex3f(100,-100,-100);
 
       glEnd();
-
-      // load the previous matrix
+      // load previous matrix
       glPopMatrix();
 
-      //glMatrixMode(GL_MODELVIEW);
-      // draw a particle; this is a test you have to generate particles in the emitter class
-      blab.run();
+       fire.run(timer.getDeltaTime());
+       timer.setEndTime(SDL_GetTicks());
+
+
 
      // update the buffer so we can see what we have drawn.
      win.swapWindow();
