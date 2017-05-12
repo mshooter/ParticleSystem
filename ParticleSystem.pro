@@ -40,21 +40,25 @@ linux-clang{
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
+SOURCES += \
+    Camera.cpp \
+    Displaywindow.cpp \
+    Emitter.cpp \
+    Fire.cpp \
+    Main.cpp \
+    Particle.cpp \
+    Timer.cpp \
+    Snow.cpp
+
+
 HEADERS += \
-    displaywindow.h \
-    particle.h \
-    emitter.h \
-    fireworks.h \
-    fire.h \
-    camera.h \
-    timer.h
+    Camera.h \
+    Displaywindow.h \
+    Emitter.h \
+    Fire.h \
+    Particle.h \
+    Timer.h \
+    Snow.h
 
 
-SOURCES += main.cpp \
-    displaywindow.cpp \
-    particle.cpp \
-    emitter.cpp \
-    fireworks.cpp \
-    fire.cpp \
-    camera.cpp \
-    timer.cpp
+
