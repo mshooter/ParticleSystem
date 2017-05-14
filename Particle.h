@@ -21,7 +21,7 @@
 /// \class Particle
 /// \brief Creates the particle, has an update function and a draw functions, and get and sets methods
 /// \todo We should make delta-members so we can change when update for different particle effects
-///and set methods to set the delta-members
+///and set methods to set the delta-members; SOMETHING WRONG WITH THE ISDEAD METHOD
 
 
 class Particle
@@ -94,6 +94,11 @@ public:
     /// @param[in] _acceleration the acceleration of the particle
     //--------------------------------------------------------------------------------------------------------------------
     void setAcceleration(glm::vec3 _acceleration);
+    //--------------------------------------------------------------------------------------------------------------------
+    /// @brief accessor function that access the y position of the particles
+    //--------------------------------------------------------------------------------------------------------------------
+    float getYPosition() const;
+
 
 private:
 

@@ -24,8 +24,6 @@
 const int WIDTH = 720;
 const int HEIGHT = 576;
 
-enum TYPES{NOTHING, SNOW, FIRE};
-
 int main()
 {
     // create our SDLWindow called window
@@ -35,11 +33,12 @@ int main()
     // sets background colour
     win.setBackground();
 
+    int _keypressed =0;
     // handle keys for the camera, and the animation
     float speed = 10;
-    float look_vertical=-50;
+    float look_vertical=0;
     float look_horizontal=0;
-    float cameraPositionZ=150;
+    float cameraPositionZ=300;
     float cameraPositionY=0;
 
     // initiate the timer
@@ -49,14 +48,14 @@ int main()
     Camera camera;
 
     // init emitters
-    Snow snow(500,glm::vec3(0,-100,0));
-    Fire bob(1000,glm::vec3(0,-100,0));
+    Snow snow(800,glm::vec3(0,0,0));
+    Fire fire(1500,glm::vec3(0,-100,0));
 
     // starts the game loop
     bool quit=false;
     while(!quit)
     {
-     // create a camera
+      // create an event
       SDL_Event event;
       // grab the event from the window (note this explicitly calls make current)
       win.pollEvent(event);
@@ -69,37 +68,57 @@ int main()
         {
           switch( event.key.keysym.sym )
           {
-            case SDLK_ESCAPE :  quit = true; break;
-            case SDLK_UP:   {   look_vertical+= speed * timer.CameraTime();      break;}
+            case SDLK_ESCAPE :  { quit = true; break; }
+            case SDLK_UP:   {   look_vertical += speed * timer.CameraTime();      break;}
             case SDLK_DOWN: {   look_vertical -= speed * timer.CameraTime();      break;}
-            case SDLK_LEFT: {   look_horizontal -= speed *timer.CameraTime();     break;}
+            case SDLK_LEFT: {   look_horizontal -= speed * timer.CameraTime();    break;}
             case SDLK_RIGHT:{   look_horizontal += speed * timer.CameraTime();    break;}
-            case SDLK_p:    {   timer.pauseTimer();                             break;}
-            case SDLK_u:    {   timer.unPauseTimer();                           break;}
-            case SDLK_w:    {   cameraPositionZ -= 5*speed *timer.CameraTime();    break;}
-            case SDLK_s:    {   cameraPositionZ += 5*speed * timer.CameraTime();   break;}
-            case SDLK_a:    {   cameraPositionY -= 5*speed *timer.CameraTime();    break;}
-            case SDLK_d:    {   cameraPositionY += 5*speed *timer.CameraTime();    break;}
-            case SDLK_0:    {    snow.applyForce(glm::vec3(0,0,0.001)); bob.applyForce(glm::vec3(0,0,0.001));  break;}
-            case SDLK_r:    {   timer.setDeltaTime(timer.ReverseTime()); snow.reverse((glm::vec3(0,-((float)rand()/RAND_MAX*0.5+0.05),0)));   break;}
+            case SDLK_w:    {   cameraPositionZ -= 5 * speed * timer.CameraTime();   break;}
+            case SDLK_s:    {   cameraPositionZ += 5 * speed * timer.CameraTime();   break;}
+            case SDLK_a:    {   cameraPositionY -= 5 * speed * timer.CameraTime();   break;}
+            case SDLK_d:    {   cameraPositionY += 5 * speed * timer.CameraTime();   break;}
+            case SDLK_p:    {   timer.pauseTimer();                                 break;}
+            case SDLK_u:    {   timer.unPauseTimer();                               break;}
+            case SDLK_r:    {   timer.setDeltaTime(timer.ReverseTime());            break;}
+            case SDLK_0:    {   _keypressed=2;                                      break; }
+            case SDLK_1:    {   _keypressed =1;                                     break;}
+            case SDLK_3:    {   look_vertical=0;    look_horizontal=0;  cameraPositionZ=300;    cameraPositionY=0;  break;}
+
           } // end of key process
         } // end of keydown
 
         default : break;
       } // end of event switch
 
-      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       // setup the scene
       win.setScene();
 
       // setup the camera
       glViewport(0,0,WIDTH,HEIGHT);
       camera.camPerspective(45.0f,float(WIDTH/HEIGHT),0.0f,100.0f);
-      camera.lookAtTarget(glm::vec3(cameraPositionY,-50,cameraPositionZ),glm::vec3(look_horizontal,look_vertical,0));
+      camera.lookAtTarget(glm::vec3(cameraPositionY,-25,cameraPositionZ),glm::vec3(look_horizontal,look_vertical,0));
 
+      // apply wind
+      if(_keypressed==1)
+      {
+         snow.applyWind();   ; fire.applyWind();
+      }
+      if(_keypressed==2)
+      {
+          fire.BlowOnFire();
+          _keypressed=0;
 
+      }
+      else
+      {
+          fire.resetAcceleration();
+      }
+
+      // run the two emitters
       snow.run(timer.DeltaTime());
-      bob.run(timer.DeltaTime());
+      fire.run(timer.DeltaTime());
+
+      // set the end time of your animation
       timer.setEndTime(SDL_GetTicks());
 
      // update the buffer so we can see what we have drawn.

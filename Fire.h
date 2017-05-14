@@ -12,7 +12,7 @@
 
 /// \class Fire
 /// \brief This is a derived class of Emitter
-/// \todo
+/// \todo You have to resolve the generate particle and kill particle
 
 class Fire : public Emitter
 {
@@ -28,6 +28,11 @@ public:
     /// @param[in] _deltaTime the elapsed time that updated the last frame
     //--------------------------------------------------------------------------------------------------------------------
     void update(float _deltaTime) override;
+
+    void BlowOnFire();
+    void resetAcceleration();
+
+    ~Fire(){;}
 };
 
 #endif // FIRE_H

@@ -1,4 +1,3 @@
-///
 /// @file Camera.cpp
 /// @brief In this file we are making the constructor, the lookAtTarget function, the cameraPerspecriveFunction and the load model and projection function
 

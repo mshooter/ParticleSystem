@@ -28,19 +28,17 @@ void Emitter::draw()
     }
 
 }
-
 //--------------------------------------------------------------------------------------------------------------------
 void Emitter::run(float _deltaTime)
 {
     update(_deltaTime);
     draw();
 }
-
 //--------------------------------------------------------------------------------------------------------------------
-void Emitter::applyForce(glm::vec3 _acceleration)
+void Emitter::applyWind()
 {
     for(int i=0; i<m_numberOfParticles; ++i)
     {
-        m_listOfParticles[i].setAcceleration(_acceleration);
+        m_listOfParticles[i].setAcceleration(glm::vec3(0,0,0.002));
     }
 }

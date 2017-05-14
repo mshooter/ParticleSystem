@@ -9,7 +9,7 @@
 
 /// \class Snow
 /// \brief This is a derived class of Emitter
-/// \todo
+/// \todo if inital state dont make it move
 
 class Snow : public Emitter
 {
@@ -25,11 +25,8 @@ public:
     /// @param[in] _deltaTime the elapsed time that updated the last frame
     //--------------------------------------------------------------------------------------------------------------------
     void update(float _deltaTime) override;
-    //--------------------------------------------------------------------------------------------------------------------
-    /// @brief function that reverse the velocity of the snow emitter
-    /// @param _velociy: the velocity of the particle
-    //--------------------------------------------------------------------------------------------------------------------
-    void reverse(glm::vec3 _velocity);
+
+    ~Snow(){;}
 
 };
 
