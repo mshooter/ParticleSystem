@@ -109,9 +109,8 @@ public:
     //--------------------------------------------------------------------------------------------------------------------
     float getYPosition() const;
 
-    float getXVelocity() const;
-    float getYVelocity() const;
-    float getZVelocity() const;
+    float getZPosition() const;
+
 
 private:
 

@@ -19,7 +19,8 @@
 
 /// \class Camera
 /// \brief This creates a camera, with the functions: where the camera looks at and its position
-/// \todo
+/// \todo need a fucntion for when we change the position of the camera and the look at target
+/// (change the world coordinates when move camera from a different angle)
 
 class Camera
 {

@@ -119,18 +119,7 @@ float Particle::getYPosition() const
     return m_position.y;
 }
 
-
-float Particle::getYVelocity() const
+float Particle::getZPosition() const
 {
-    return m_velocity.y;
-}
-
-float Particle::getXVelocity() const
-{
-    return m_velocity.x;
-}
-
-float Particle::getZVelocity() const
-{
-    return m_velocity.z;
+    return m_position.z;
 }

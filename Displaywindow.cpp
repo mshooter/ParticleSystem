@@ -129,3 +129,5 @@ void DisplayWindow::ErrorExit(const std::string &_msg) const
   SDL_Quit();
   exit(EXIT_FAILURE);
 }
+
+

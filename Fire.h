@@ -42,6 +42,7 @@ public:
     void resetAcceleration();
 
 
+
 };
 
 #endif // FIRE_H

@@ -35,6 +35,6 @@ void Emitter::applyWind()
 {
     for(int i=0; i<m_numberOfParticles; ++i)
     {
-        m_listOfParticles[i].setAcceleration(glm::vec3(0,0,(float)rand()/(float)RAND_MAX*0.002));
+        m_listOfParticles[i].setAcceleration(glm::vec3(0,0,(float)rand()/(float)RAND_MAX*0.005));
     }
 }

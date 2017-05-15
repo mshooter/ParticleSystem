@@ -9,7 +9,7 @@
 
 /// \class Timer
 /// \brief This creates a timer, and calculates the elapsed time and has its set and get methos
-/// \todo
+/// \todo there is a problem with the timer (for different systems)
 
 class Timer
 {
@@ -31,9 +31,13 @@ public:
     //--------------------------------------------------------------------------------------------------------------------
     float DeltaTime() const;
     //--------------------------------------------------------------------------------------------------------------------
-    /// @brief accessor function that acces the negative elapsed time forthe particle system animation
+    /// @brief accessor function that acces the slowmotion time fort he particle system animation
     //--------------------------------------------------------------------------------------------------------------------
-    float ReverseTime() const;
+    float getSlowMow() const;
+    //--------------------------------------------------------------------------------------------------------------------
+    /// @brief accessor function that access if the timer is paused or not
+    //--------------------------------------------------------------------------------------------------------------------
+    bool getPause() const;
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief mutator function that sets the timer when the animation end particle system
     /// @param[in] _endTime the time when the updating is finished
@@ -53,7 +57,6 @@ public:
     //--------------------------------------------------------------------------------------------------------------------
     void unPauseTimer();
 
-    bool getPause() const;
 private:
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief the value when the timer starts
@@ -74,11 +77,11 @@ private:
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief the negative value of the elapsed time for the animation of the particle system
     //--------------------------------------------------------------------------------------------------------------------
-    float m_reverseTime;
+    float m_slowMotion;
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief value if the timer is paused or not
     //--------------------------------------------------------------------------------------------------------------------
-    bool m_pause=true;
+    bool m_pause;
 
 
 };

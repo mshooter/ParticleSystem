@@ -22,7 +22,6 @@ macx: {
   QMAKE_LFLAGS += -F/Library/Frameworks
   LIBS+= -framework OpenGL
   LIBS += -framework SDL2
-  INCLUDEPATH += /Library/Frameworks/SLD2_image.framework
   INCLUDEPATH += /usr/local/include
   INCLUDEPATH += /usr/local/Cellar
   INCLUDEPATH += /usr/local/lib
@@ -49,7 +48,7 @@ SOURCES += \
     Particle.cpp \
     Timer.cpp \
     Snow.cpp \
-    Star.cpp
+    WaterFall.cpp
 
 
 HEADERS += \
@@ -60,7 +59,7 @@ HEADERS += \
     Particle.h \
     Timer.h \
     Snow.h \
-    Star.h
+    WaterFall.h
 
 
 
