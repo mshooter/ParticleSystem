@@ -105,7 +105,6 @@ void DisplayWindow::init()
   }
 
   createGLContext();
-
 }
 //--------------------------------------------------------------------------------------------------------------------
 void DisplayWindow::createGLContext()

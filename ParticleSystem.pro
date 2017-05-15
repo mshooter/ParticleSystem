@@ -48,7 +48,8 @@ SOURCES += \
     Main.cpp \
     Particle.cpp \
     Timer.cpp \
-    Snow.cpp
+    Snow.cpp \
+    Star.cpp
 
 
 HEADERS += \
@@ -58,7 +59,8 @@ HEADERS += \
     Fire.h \
     Particle.h \
     Timer.h \
-    Snow.h
+    Snow.h \
+    Star.h
 
 
 

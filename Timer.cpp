@@ -10,8 +10,8 @@ Timer::Timer()
     m_endTime = 0;
     m_cameraTime = (m_startTime - m_endTime)/2500;
     m_deltaTime =  (m_startTime - m_endTime)/2500;
-    m_reverseTime = -(4*m_cameraTime);
-
+    m_pause = false;
+    //m_reverseTime = -(4*m_cameraTime);
 }
 //--------------------------------------------------------------------------------------------------------------------
 float Timer::CameraTime() const
@@ -41,12 +41,21 @@ void Timer::setEndTime(float _endTime)
 //--------------------------------------------------------------------------------------------------------------------
 void Timer::pauseTimer()
 {
+    // sets back the pause button to false
+    m_pause = true;
     setDeltaTime(0);
 }
 //--------------------------------------------------------------------------------------------------------------------
 void Timer::unPauseTimer()
 {
+    // sets back the pause button to true
+    m_pause = false;
     setDeltaTime(CameraTime());
+}
+
+bool Timer::getPause() const
+{
+    return m_pause;
 }
 
 

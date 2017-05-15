@@ -5,20 +5,17 @@
 
 Emitter::Emitter(int _numberOfParticles, glm::vec3 _positionE)
 {
-    // set the position of the emitter as the position for you particles (pointer)
     for(int i=0; i<_numberOfParticles; ++i)
     {
         m_listOfParticles.push_back(Particle());
     }
-    // number of particles
+
     m_numberOfParticles = _numberOfParticles;
     m_positionEmitter = _positionE;
-
 }
 //--------------------------------------------------------------------------------------------------------------------
 void Emitter::draw()
 {
-
     for(int i=0; i<m_numberOfParticles; ++i)
     {
         if(m_listOfParticles[i].isDead() == 0)
@@ -26,7 +23,6 @@ void Emitter::draw()
             m_listOfParticles[i].draw();
         }
     }
-
 }
 //--------------------------------------------------------------------------------------------------------------------
 void Emitter::run(float _deltaTime)
@@ -39,6 +35,6 @@ void Emitter::applyWind()
 {
     for(int i=0; i<m_numberOfParticles; ++i)
     {
-        m_listOfParticles[i].setAcceleration(glm::vec3(0,0,0.002));
+        m_listOfParticles[i].setAcceleration(glm::vec3(0,0,(float)rand()/(float)RAND_MAX*0.002));
     }
 }

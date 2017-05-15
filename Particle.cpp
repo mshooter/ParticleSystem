@@ -11,8 +11,8 @@ void Particle::update(float _deltaTime)
 {
         m_velocity +=m_acceleration*_deltaTime; // set the velocity of the particle
         m_position += m_velocity*_deltaTime; // set the position of the particle
-        m_lifeSpan += 0.02*_deltaTime; // set the lifespan of the particle
-        m_transparency -= 0.02*_deltaTime; // set the transparancy of the particle
+        m_lifeSpan += m_deltaLifeSpan*_deltaTime; // set the lifespan of the particle
+        m_transparency -= m_deltaTransparency*_deltaTime; // set the transparancy of the particle
         m_colour -= m_deltaColour*_deltaTime; // set the colour of the particle
         m_size -= m_deltaSize*_deltaTime; // set the size ofthe particle
 }
@@ -31,7 +31,6 @@ void Particle::draw()
      glBegin(GL_POINTS);
      glVertex3f(m_position.x, m_position.y, m_position.z);
      glEnd();
-
 }
 //--------------------------------------------------------------------------------------------------------------------
 int Particle::isDead()
@@ -46,13 +45,10 @@ int Particle::isDead()
         m_size <= 0                 || // if the size is zero or less; die
         m_transparency <= 0)           // if the transparancey is zero or less; die
     {
-
         return 1;
     }
     else
     {
-
-
         return 0;
     }
 }
@@ -82,6 +78,11 @@ void Particle::setTransparency(float _transparency)
     m_transparency = _transparency;
 }
 //--------------------------------------------------------------------------------------------------------------------
+void Particle::setDeltaTransparency(float _deltaTransparency)
+{
+    m_deltaTransparency = _deltaTransparency;
+}
+//--------------------------------------------------------------------------------------------------------------------
 void Particle::setSize(float _size)
 {
     m_size = _size;
@@ -97,6 +98,12 @@ void Particle::setLifeSpan(float _lifeSpan)
     m_lifeSpan=_lifeSpan;
 }
 //--------------------------------------------------------------------------------------------------------------------
+void Particle::setDeltaLifeSpan(float _deltaLifeSpan)
+{
+    m_deltaLifeSpan = _deltaLifeSpan;
+}
+
+//--------------------------------------------------------------------------------------------------------------------
 void Particle::setLifeLimit(float _lifeLimit)
 {
     m_lifeLimit = _lifeLimit;
@@ -110,4 +117,20 @@ void Particle::setAcceleration(glm::vec3 _acceleration)
 float Particle::getYPosition() const
 {
     return m_position.y;
+}
+
+
+float Particle::getYVelocity() const
+{
+    return m_velocity.y;
+}
+
+float Particle::getXVelocity() const
+{
+    return m_velocity.x;
+}
+
+float Particle::getZVelocity() const
+{
+    return m_velocity.z;
 }
