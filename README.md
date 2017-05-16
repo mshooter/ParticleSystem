@@ -52,6 +52,7 @@ through the scene with the camera we made.
 - C++11
 # problems to be fixed
 - the timer is different for different systems: when you calculate deltatime in the timer you need to devide it by a number. 
+
 For linux it would be devided by 1000
 
 For Mac it would be devided by 2500
@@ -72,5 +73,4 @@ For Mac it would be devided by 2500
 [6] Bartek's coding blog, Bartlomiej Filipek. (2014). Flexible Particle System. [online] Available at: http://www.bfilipek.com/2014/04/flexible-particle-system-start.html [Accessed 2017]
 
 
-
-
+...
