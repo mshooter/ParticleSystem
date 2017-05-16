@@ -1,11 +1,12 @@
 #ifndef TIMER_H
 #define TIMER_H
-
+/// @file Timer.h
+/// @brief A Timer class, that keeps the time, and changes the framerate
 #include "SDL2/SDL.h"
 
 /// \author Moira Shooter
-/// \version 1.0
-/// \date Last Revision
+/// \version
+/// \date Last Revision 16 MAY 2017
 
 /// \class Timer
 /// \brief This creates a timer, and calculates the elapsed time and has its set and get methos

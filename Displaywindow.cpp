@@ -1,6 +1,7 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file DisplayWindow.cpp
 /// @brief Creating a SDL Window
-
+//--------------------------------------------------------------------------------------------------------------------
 #include "DisplayWindow.h"
 
 DisplayWindow::DisplayWindow(const std::string &_name, int _x, int _y, int _width, int _height)
@@ -28,7 +29,9 @@ void DisplayWindow::setScene()
 {
     // clears the buffer to draw after this function
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+    /// The followingsection is from:-
+    /// OpenGL,moox,2001. draw xyz axes [online]. [Accessed 2017]
+    /// Available from: "https://www.opengl.org/discussion_boards/showthread.php/150541-draw-xyz-axes"
     glPushMatrix();
     // draw the x,y,z axis
     glBegin(GL_LINES);
@@ -47,38 +50,49 @@ void DisplayWindow::setScene()
     glEnd();
     // load the previous matrix
     glPopMatrix();
+    /// end of citation
 
+    /// The followingsection is from:-
+    /// OpenGL,Silver,2004. Drawing a cube [online]. [Accessed 2017]
+    /// Available from: "https://www.opengl.org/discussion_boards/showthread.php/137599-Drawing-a-cube"
+    /// (Modified)
     // drawing the cube
     glPushMatrix();
     glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
     glBegin(GL_QUADS);
 
     glColor3f(1.0, 1.0, 1.0);
+    // front face
     glVertex3f(100,100,100);
     glVertex3f(-100,100,100);
     glVertex3f(-100,-100,100);
     glVertex3f(100,-100,100);
 
+    // back face
     glVertex3f(100,100,-100);
     glVertex3f(-100,100,-100);
     glVertex3f(-100,-100,-100);
     glVertex3f(100,-100,-100);
 
+    // right face
     glVertex3f(100,100,100);
     glVertex3f(100,-100,100);
     glVertex3f(100,-100,-100);
     glVertex3f(100,100,-100);
 
+    // left face
     glVertex3f(-100,100,100);
     glVertex3f(-100,-100,100);
     glVertex3f(-100,-100,-100);
     glVertex3f(-100,100,-100);
 
+    // up face
     glVertex3f(100,100,100);
     glVertex3f(-100,100,100);
     glVertex3f(-100,100,-100);
     glVertex3f(100,100,-100);
 
+    // lower face
     glVertex3f(100,-100,100);
     glVertex3f(-100,-100,100);
     glVertex3f(-100,-100,-100);
@@ -87,6 +101,8 @@ void DisplayWindow::setScene()
     glEnd();
     // load previous matrix
     glPopMatrix();
+
+    /// end citation
 }
 //--------------------------------------------------------------------------------------------------------------------
 void DisplayWindow::init()

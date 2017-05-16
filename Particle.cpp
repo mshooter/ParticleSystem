@@ -1,32 +1,29 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file Particle.h
 /// @brief constructor, udpates the particles, draws the particles, set and get methods are available
-
+//--------------------------------------------------------------------------------------------------------------------
 #include "Particle.h"
 
-Particle::Particle()
-{
-}
-//--------------------------------------------------------------------------------------------------------------------
 void Particle::update(float _deltaTime)
 {
-        m_velocity +=m_acceleration*_deltaTime; // set the velocity of the particle
-        m_position += m_velocity*_deltaTime; // set the position of the particle
-        m_lifeSpan += m_deltaLifeSpan*_deltaTime; // set the lifespan of the particle
+        m_velocity +=m_acceleration*_deltaTime;     // set the velocity of the particle
+        m_position += m_velocity*_deltaTime;        // set the position of the particle
+        m_lifeSpan += m_deltaLifeSpan*_deltaTime;   // set the lifespan of the particle
         m_transparency -= m_deltaTransparency*_deltaTime; // set the transparancy of the particle
-        m_colour -= m_deltaColour*_deltaTime; // set the colour of the particle
-        m_size -= m_deltaSize*_deltaTime; // set the size ofthe particle
+        m_colour -= m_deltaColour*_deltaTime;       // set the colour of the particle
+        m_size -= m_deltaSize*_deltaTime;           // set the size ofthe particle
 }
 //--------------------------------------------------------------------------------------------------------------------
 void Particle::draw()
 {
     // enable blending
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //enables that the the transparency of the particle can change
     // colour for the particle
     glColor4f(m_colour.x, m_colour.y, m_colour.z, m_transparency);
 
     // shape of particle
-     glEnable(GL_POINT_SMOOTH);
+     glEnable(GL_POINT_SMOOTH); // smooth the particles so they are not little squares
      glPointSize(m_size);
      glBegin(GL_POINTS);
      glVertex3f(m_position.x, m_position.y, m_position.z);
@@ -117,9 +114,4 @@ void Particle::setAcceleration(glm::vec3 _acceleration)
 float Particle::getYPosition() const
 {
     return m_position.y;
-}
-
-float Particle::getZPosition() const
-{
-    return m_position.z;
 }

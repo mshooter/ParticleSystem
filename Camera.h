@@ -1,6 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
-
+/// @file Camera.h
+/// @brief A camera class, with functions: perspective, lookat, loading the modelview and projection
 #ifdef __APPLE__
   #include <OpenGL/gl.h>
   #include <OpenGL/glu.h>
@@ -13,9 +14,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-/// \author Moira Shooter
-/// \version 1.0
-/// \date Last Revision
+/// \author Renat Bikmajev Modified: Moira Shooter
+/// \version
+/// \date Last Revision 16 MAY 2017
 
 /// \class Camera
 /// \brief This creates a camera, with the functions: where the camera looks at and its position
@@ -28,7 +29,7 @@ public:
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief the default constructor for the camera
     //--------------------------------------------------------------------------------------------------------------------
-    Camera();
+    Camera(){;}
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief the default destructor for the camera
     //--------------------------------------------------------------------------------------------------------------------

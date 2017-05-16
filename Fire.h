@@ -1,14 +1,15 @@
 #ifndef FIRE_H
 #define FIRE_H
-
+/// @file Fire.h
+/// @brief A Emitter class called fire that generates a simpel fire
 #include <iostream>
 #include <cstdlib>
 #include "SDL2/SDL.h"
 #include "Emitter.h"
 
 /// \author Moira Shooter
-/// \version 1.0
-/// \date Last Revision
+/// \version
+/// \date Last Revision 16 MAY 2017
 
 /// \class Fire
 /// \brief This is a derived class of Emitter

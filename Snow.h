@@ -1,11 +1,12 @@
 #ifndef SNOW_H
 #define SNOW_H
-
+/// @file Snow.h
+/// @brief A Emitter class called Snow that generates a snow
 #include "Emitter.h"
 
 /// \author Moira Shooter
-/// \version 1.0
-/// \date Last Revision
+/// \version
+/// \date Last Revision 16 MAY 2017
 
 /// \class Snow
 /// \brief This is a derived class of Emitter

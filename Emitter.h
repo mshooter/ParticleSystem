@@ -1,13 +1,15 @@
 #ifndef EMITTER_H
 #define EMITTER_H
-
+/// @file Emitter.h
+/// @brief A Emitter class with its number of particles and position, updates the emitter, and draws it
+/// You can apply a force to it for example wind
 #include <iostream>
 #include <vector>
 #include "Particle.h"
 
 /// \author Moira Shooter
-/// \version 1.0
-/// \date Last Revision
+/// \version
+/// \date Last Revision 16 MAY 2017
 
 /// \class Emitter
 /// \brief This creates an Emitter with its number of particles and position, updates the emitter, and draws it
@@ -59,7 +61,7 @@ protected:
     //--------------------------------------------------------------------------------------------------------------------
     glm::vec3 m_positionEmitter;
     //--------------------------------------------------------------------------------------------------------------------
-    /// @brief a vector where you store the particles in
+    /// @brief a vector where you store the particles in (container)
     //--------------------------------------------------------------------------------------------------------------------
     std::vector<Particle> m_listOfParticles;
 

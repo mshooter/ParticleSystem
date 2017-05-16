@@ -1,6 +1,7 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file Emitter.h
 /// @brief Creates the constructor, the update, draw, run and applyforce function.
-
+//--------------------------------------------------------------------------------------------------------------------
 #include "Emitter.h"
 
 Emitter::Emitter(int _numberOfParticles, glm::vec3 _positionE)
@@ -18,6 +19,7 @@ void Emitter::draw()
 {
     for(int i=0; i<m_numberOfParticles; ++i)
     {
+        // only draw if the particle is alive
         if(m_listOfParticles[i].isDead() == 0)
         {
             m_listOfParticles[i].draw();

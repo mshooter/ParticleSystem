@@ -1,6 +1,7 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file Fire.h
 /// @brief Constructor and update function, the update function overrides the virtual update function of the emitter
-
+//--------------------------------------------------------------------------------------------------------------------
 #include "Fire.h"
 
 Fire::Fire(int _numberOfParticles, glm::vec3 _positionFire) : Emitter(_numberOfParticles, _positionFire)
@@ -16,10 +17,12 @@ void Fire::update(float _deltaTime)
     {
        if(m_listOfParticles[i].isDead() == 0)
        {
+           // update the particles if not dead
            m_listOfParticles[i].update(_deltaTime);
        }
        else
        {
+           // reset the values if dead
            m_listOfParticles[i].setPosition((glm::vec3(sin((float)rand()/RAND_MAX*10.0-4.5f), 0, sin((float)rand()/RAND_MAX*10.0f-4.0f))*(glm::vec3((float)rand()/RAND_MAX*25.0-13.0f, 0, (float)rand()/RAND_MAX*25.0f-13.0f)))+m_positionEmitter);
            m_listOfParticles[i].setVelocity(glm::vec3(0,(float)rand()/(float)RAND_MAX*2.0+0.5,0));
            m_listOfParticles[i].setColour(glm::vec3(1,0.5,0));
@@ -39,6 +42,7 @@ void Fire::blowOnFire()
 {
     for(int i=0; i<m_numberOfParticles; ++i)
     {
+        // if the particles are higher than a certain hight change the acceleration
         if(m_listOfParticles[i].getYPosition()>=-80)
         {
              m_listOfParticles[i].setAcceleration(glm::vec3(0,0,-((float)rand()/(float)RAND_MAX*1.6+0.9)));

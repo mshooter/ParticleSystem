@@ -1,9 +1,9 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file Timer.h
 /// @brief set the constructor, set and get methods
-
+//--------------------------------------------------------------------------------------------------------------------
 #include "Timer.h"
 
-/// back in time negative delta time
 Timer::Timer()
 {
     m_startTime = SDL_GetTicks();
@@ -48,14 +48,14 @@ void Timer::setEndTime(float _endTime)
 //--------------------------------------------------------------------------------------------------------------------
 void Timer::pauseTimer()
 {
-    // sets back the pause button to false
+    // sets the pause button back to true;
     m_pause = true;
     setDeltaTime(0);
 }
 //--------------------------------------------------------------------------------------------------------------------
 void Timer::unPauseTimer()
 {
-    // sets back the pause button to true
+    // sets the pause button back to false
     m_pause = false;
     setDeltaTime(CameraTime());
 }

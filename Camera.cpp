@@ -1,12 +1,10 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file Camera.cpp
-/// @brief In this file we are making the constructor, the lookAtTarget function, the cameraPerspecriveFunction and the load model and projection function
-
-
+/// @brief In this file we are making the constructor, the lookAtTarget function,
+///  the cameraPerspecriveFunction and the load model and projection function
+//--------------------------------------------------------------------------------------------------------------------
 #include "Camera.h"
 
-Camera::Camera()
-{}
-//--------------------------------------------------------------------------------------------------------------------
 void Camera::lookAtTarget(glm::vec3 _eye, glm::vec3 _target)
 {
     loadModelView(glm::lookAt(_eye, _target, glm::vec3(0,1,0)));

@@ -1,6 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
-
+/// @file Particle.h
+/// @brief A Particle class, with all its variables and mutator/accessor functions
 #ifdef __APPLE__
   #include <OpenGL/gl.h>
   #include <OpenGL/glu.h>
@@ -15,13 +16,12 @@
 #include "SDL2/SDL.h"
 
 /// \author Moira Shooter
-/// \version 1.0
-/// \date Last Revision
+/// \version
+/// \date Last Revision 16 MAY 2017
 
 /// \class Particle
 /// \brief Creates the particle, has an update function and a draw functions, and get and sets methods
-/// \todo We should make delta-members so we can change when update for different particle effects
-///and set methods to set the delta-members; SOMETHING WRONG WITH THE ISDEAD METHOD
+/// \todo
 
 
 class Particle
@@ -30,7 +30,7 @@ public:
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief the default constructor for particle
     //--------------------------------------------------------------------------------------------------------------------
-    Particle();
+    Particle(){;}
     //--------------------------------------------------------------------------------------------------------------------
     /// @brief function to update the particle's position
     /// @param[in] _deltaTime the elapsed time that updated the last frame
@@ -60,7 +60,7 @@ public:
     //--------------------------------------------------------------------------------------------------------------------
     void setColour(glm::vec3 _colour);
     //--------------------------------------------------------------------------------------------------------------------
-    /// @brief funciton that sets the delta colour of the particle
+    /// @brief function that sets the delta colour of the particle
     /// @param[in] _deltaColour the delta colour of of the particle
     //--------------------------------------------------------------------------------------------------------------------
     void setDeltaColour(glm::vec3 _deltaColour);
@@ -108,8 +108,6 @@ public:
     /// @brief accessor function that access the y position of the particles
     //--------------------------------------------------------------------------------------------------------------------
     float getYPosition() const;
-
-    float getZPosition() const;
 
 
 private:

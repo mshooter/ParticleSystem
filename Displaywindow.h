@@ -1,6 +1,7 @@
 #ifndef DISPLAYWINDOW_H
 #define DISPLAYWINDOW_H
-
+/// @file Displaywindow.h
+/// @brief A DisplayWndow class that basically dipslays a SDLWindow and generates a default scene (cube, axis)
 #ifdef __APPLE__
   #include <OpenGL/gl.h>
   #include <OpenGL/glu.h>
@@ -15,10 +16,10 @@
 
 /// \author Jon Macey modified: Moira Shooter
 /// \version
-/// \date Last Revision
+/// \date Last Revision 16 MAY 2017
 
 /// \class Display Window
-/// \brief Creates a SDL Window and sets the background colour
+/// \brief Creates a SDL Window and sets the background colour, sets the scene (cube and axis)
 /// \todo
 
 class DisplayWindow

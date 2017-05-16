@@ -1,6 +1,9 @@
+//--------------------------------------------------------------------------------------------------------------------
 /// @file WaterFall.h
-/// @brief This makes a waterfall emitter, when it touches the ground it will make splatter effect
-
+/// @brief This makes a waterfall emitter,
+/// updates only when it is alive and checks if it touches the ground if it does it will make splatter effect
+/// if the particld is dead it will reset it values to a "water particle"
+//--------------------------------------------------------------------------------------------------------------------
 #include "WaterFall.h"
 
 Waterfall::Waterfall(int _numberOfParticles, glm::vec3 _position) : Emitter(_numberOfParticles, _position)
@@ -20,6 +23,7 @@ void Waterfall::update(float _deltaTime)
         if(m_listOfParticles[i].isDead()==0)
         {
             m_listOfParticles[i].update(_deltaTime);
+            // if the particle hits the ground make splash effect
             if(m_listOfParticles[i].getYPosition()<-99)
             {
                 m_listOfParticles[i].setVelocity((glm::vec3((float)rand()/(float)RAND_MAX*3.0f-1.5f,(float)rand()/(float)RAND_MAX*3.0+1.5f,(float)rand()/(float)RAND_MAX*3.0f-1.5f)));
@@ -27,6 +31,7 @@ void Waterfall::update(float _deltaTime)
         }
         else
         {
+            // reset the values to the default waterfall particle
             m_listOfParticles[i].setPosition(glm::vec3((float)rand()/(float)RAND_MAX*50.0f-25.0f,(float)rand()/(float)RAND_MAX*50-10.0f,(float)rand()/(float)RAND_MAX*25.0f-10.0f)+m_positionEmitter);
             m_listOfParticles[i].setAcceleration(glm::vec3(0,-0.6,0));
             m_listOfParticles[i].setVelocity(glm::vec3(0,-((float)rand()/(float)RAND_MAX*2.0f+1.0f),0));
