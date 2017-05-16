@@ -18,11 +18,11 @@ through the scene with the camera we made.
 **RIGHT arrow**: change your view to look right 
 
 
-**w **: move position of the camera (moves negative direction of the z-axis)
+**w**: move position of the camera (moves negative direction of the z-axis)
 
 **s** : move position of the camera (moves positive direction of the z-axis)
 
-**a **: move position of the camera (moves negative direction of the x-axis)
+**a**: move position of the camera (moves negative direction of the x-axis)
 
 **d** : move position of the camera (moves positive direction of thex-axis)
 
@@ -39,7 +39,7 @@ through the scene with the camera we made.
 **f** : applies a force, for example wind ( you can change the setting in the applyWind function (emitter) ) 
 
 
-your default scene as the campfire/snow scene so if you want to change scene press number:
+### your default scene as the campfire/snow scene so if you want to change scene press number:
 
 **1** : WATERFALL scene 
 
