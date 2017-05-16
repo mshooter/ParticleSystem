@@ -6,6 +6,10 @@ I made three different emitters: A snow emitter, a fire emitter and a "waterfall
 I generated all those emitters in a box, the box is a boundary for the particles. We have the x-,y- and z-axes in the scene, to help navigate
 through the scene with the camera we made. 
 
+## The Video
+
+https://youtu.be/dGAJDXugYKs
+
 # Usage : Keys
 **ESC**: escape the program
 
@@ -71,9 +75,5 @@ For Mac it would be devided by 2500
 [5] Ginman, V., Malmros, K. (n.d.). Visualization of smoke using particle systems. [online] Available at: http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group9Petter/report/Veronica.Ginman.Kim.Malmros.report.pdf [Accessed 2017] 
 
 [6] Bartek's coding blog, Bartlomiej Filipek. (2014). Flexible Particle System. [online] Available at: http://www.bfilipek.com/2014/04/flexible-particle-system-start.html [Accessed 2017]
-
-# The Video
-
-https://youtu.be/dGAJDXugYKs
 
 ...
