@@ -114,7 +114,8 @@ int main()
           // apply wind
           if(pressedKey==1)
           {
-             snow.applyWind();   ; fire.applyWind();
+             snow.applyWind();
+             fire.applyWind();
 
           }
           if(pressedKey==2)
