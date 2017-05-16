@@ -51,6 +51,17 @@ through the scene with the camera we made.
 - SDL2 
 - C++11
 
+# References 
+[1] WILLIAM T. REEVES (1983). Particle Systems - A Technique for Modeling a Class of Fuzzy Objects. [online] pp.350-375. Available at: https://www.lri.fr/~mbl/ENS/IG2/devoir2/files/docs/fuzzyParticles.pdf [Accessed 2017].
+
+[2] Shiffman, D. (2012). The nature of code: Chapter 4. Particle Systems. [online] Available at: http://natureofcode.com/book/chapter-4-particle-systems/ [Accessed 2017] 
+
+[3] Zhang, J., Angel, E., Alsing, P. and Munich, D. (n.d.). An Object-Oriented Particle System for Simulation and Visualization. [online] Available at: https://pdfs.semanticscholar.org/56a4/1ee99e2cdc4620a919a35a661ed7b1f8eee4.pdf [Accessed 2017].
+
+[4] Ginman, V., Malmros, K. (n.d.). Visualization of smoke using particle systems. [online] Available at: http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group9Petter/report/Veronica.Ginman.Kim.Malmros.report.pdf [Accessed 2017] 
+
+[5] Macey, J. (2017). Particle System. [online] Available at: https://github.com/NCCA/ParticleSystem [Accessed 2017]
+
 
 
 
