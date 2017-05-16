@@ -72,5 +72,8 @@ For Mac it would be devided by 2500
 
 [6] Bartek's coding blog, Bartlomiej Filipek. (2014). Flexible Particle System. [online] Available at: http://www.bfilipek.com/2014/04/flexible-particle-system-start.html [Accessed 2017]
 
+# The Video
+
+https://youtu.be/dGAJDXugYKs
 
 ...
