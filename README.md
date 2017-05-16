@@ -50,6 +50,13 @@ through the scene with the camera we made.
 - GLM (OpenGL Mathematics) 
 - SDL2 
 - C++11
+# problems to be fixed
+- the timer is different for different systems: when you calculate deltatime in the timer you need to devide it by a number. 
+For linux it would be devided by 1000
+
+For Mac it would be devided by 2500
+
+(check the comments in the code for clarity) 
 
 # References 
 [1] WILLIAM T. REEVES (1983). Particle Systems - A Technique for Modeling a Class of Fuzzy Objects. [online] pp.350-375. Available at: https://www.lri.fr/~mbl/ENS/IG2/devoir2/files/docs/fuzzyParticles.pdf [Accessed 2017].
