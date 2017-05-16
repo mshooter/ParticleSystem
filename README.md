@@ -58,9 +58,11 @@ through the scene with the camera we made.
 
 [3] Zhang, J., Angel, E., Alsing, P. and Munich, D. (n.d.). An Object-Oriented Particle System for Simulation and Visualization. [online] Available at: https://pdfs.semanticscholar.org/56a4/1ee99e2cdc4620a919a35a661ed7b1f8eee4.pdf [Accessed 2017].
 
-[4] Ginman, V., Malmros, K. (n.d.). Visualization of smoke using particle systems. [online] Available at: http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group9Petter/report/Veronica.Ginman.Kim.Malmros.report.pdf [Accessed 2017] 
+[4] Macey, J. (2017). Particle System. [online] Available at: https://github.com/NCCA/ParticleSystem [Accessed 2017]
 
-[5] Macey, J. (2017). Particle System. [online] Available at: https://github.com/NCCA/ParticleSystem [Accessed 2017]
+[5] Ginman, V., Malmros, K. (n.d.). Visualization of smoke using particle systems. [online] Available at: http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group9Petter/report/Veronica.Ginman.Kim.Malmros.report.pdf [Accessed 2017] 
+
+[6] Bartek's coding blog, Bartlomiej Filipek. (2014). Flexible Particle System. [online] Available at: http://www.bfilipek.com/2014/04/flexible-particle-system-start.html [Accessed 2017]
 
 
 
