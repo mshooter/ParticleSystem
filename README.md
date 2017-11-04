@@ -1,10 +1,9 @@
 # ParticleSystem
 
-This a project for my second assignment for Principles and Practice of Programming. (Bournemouth University, 2017)
-I chose to make a particle system where a reset the values of the particle, everytime they die. 
-I made three different emitters: A snow emitter, a fire emitter and a "waterfall emitter with splash effects". 
-I generated all those emitters in a box, the box is a boundary for the particles. We have the x-,y- and z-axes in the scene, to help navigate
-through the scene with the camera we made. 
+This a project for my second assignment for Principles and Practice of Programming (Bournemouth University, 2017).
+I chose to make a particle system where I reset the value of the particle, everytime it dies. 
+I made three different emitters: A snow emitter, a fire emitter and a waterfall "emitter" with splash effects. 
+I generated all the emitters in a box; the box is a boundary for the particles. There are x-,y- and z-axes in the scene to help navigate through the scene with the camera I made. 
 
 ## The Video
 
